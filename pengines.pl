@@ -2388,7 +2388,7 @@ create_wait_and_output_result(Pengine, Queue, Format, TimeLimit, Dict) :-
 
 is_more_event(success(_Id, _Answers, _Projection, _Time, true)).
 is_more_event(create(_, Options)) :-
-    memberchk(answer(Event), Options),
+    option(answer(Event), Options),
     is_more_event(Event).
 
 
@@ -2448,7 +2448,7 @@ destroy_queue_from_http(ID, Event, Queue) :-
 is_destroy_event(destroy(_)).
 is_destroy_event(destroy(_,_)).
 is_destroy_event(create(_, Options)) :-
-    memberchk(answer(Event), Options),
+    option(answer(Event), Options),
     is_destroy_event(Event).
 
 destroy_queue_if_empty(Queue) :-
